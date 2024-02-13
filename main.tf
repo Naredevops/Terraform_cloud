@@ -1,10 +1,10 @@
 resource "github_repository" "Naredevops" {
-  name        = "Terraform_cloud"
+  name        = "Terraform_binary"
   description = "My awesome codebase"
   visibility  = "public"
 }
 
 resource "github_branch" "development" {
-  repository = "Terraform_cloud"
+  repository = "Terraform_binary"
   branch     = "development"
 }
