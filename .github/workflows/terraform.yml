@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      
 
 jobs:
   terraform:
@@ -13,18 +12,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
+
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: 1.0.0
-      
+
+      - name: Configure GitHub Token
+        run: echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
+
       - name: Terraform Init
         run: terraform init
-      
+
       - name: Terraform Plan
         run: terraform plan
-      
+
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve
