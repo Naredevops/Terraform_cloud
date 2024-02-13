@@ -4,7 +4,4 @@ resource "github_repository" "Naredevops" {
   visibility  = "public"
 }
 
-resource "github_branch" "development" {
-  repository = "Terraform_binary"
-  branch     = "development"
-}
+
